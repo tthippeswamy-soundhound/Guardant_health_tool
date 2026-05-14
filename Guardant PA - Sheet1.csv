@@ -1,0 +1,55 @@
+Category,,Description,
+user_hangup ,Yes/No,If the user hangs up the call,who hung up (Amelia or human) with reason
+call_ended,Yes/No,If amelia ends or disconnects the call due to any reason,
+human_picked_up,Yes/No,If the user received the call,
+human_rpc_confirmed,Yes/No,If the user confirmed their identity,right party confirm(rpc) 
+number_of_times_amelia_asked_for_rpc,Count,the number of times Amelia tried user identification ,
+human_related_party_or_unavailable,Yes/No,if the patient is unavailable or someone else picked up the call,
+human_hung_up_before_rpc,Yes/No,if user hung up immediately or during the question,
+human_blood_draw_info_given,Yes/No,if the user provided information for the blood draw question,amelia
+human_hung_up_before_blood_draw_question,Yes/No,if user hung up immediately or during the question,human
+user_requested_additional_assistance,Yes/No,also list the question,
+amelia_provided_additional_assistance,Yes/No,also list the answer,
+escalation_requested,Yes/No,if the user requests a representative,
+callback_requested,Yes/No,if the user requests for a callback,
+amelia_acknowledged_callback_escalate_request,Yes/No,if Amelia responded to user's request for a callback or escalation request,
+,,,
+voicemail_connected,Yes/No,if the call reached a voicemail machine,
+ivr_connected,Yes/No,if the call reached an ivr,
+voicemail_successful,Reason and Yes/No,"spoke before beep, VM not setup, Mailbox full, amelia didn't speak fast enough, user picked up in between leaving VM",
+prescreening_connected,Yes/No,if the call went for prescreening,
+prescreening_successful,Yes/No,if the call went for prescreening and Amelia handled it ,
+user_requested_spanish,Yes/No,if the user asks for Spanish instructions,
+silence,Yes/No,More than 10 seconds silence should trigger Yes in this.,
+no_audio_available,Yes/No,if the recording is a blank call,
+,,,
+Misc,,,
+amelia not replying to user hello for long,,if Amelia failed to greet or respond to user at all in the recording or during the interaction,
+"if user also doesn't reply, amelia stays on the call for hours",,,
+Amelia needs to pronounce her name and guardant health correctly at all times,,,
+identify user amelia and VM amelia overlap,,,
+Additional comments (if anything apart from above metrics),,,
+total silence on the call yet amelia staying on the line for hours,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+"main prompt : f""""""
+        You will receive a transcript of a conversation between an AI agent and a patient.
+        Your task is to analyze the transcript and determine the following:
+
+        1. Confirm the patient's name.
+        2. Identify whether the patient has completed their blood draw.
+        3. Classify the type of call: Human, Voicemail, or Prescreening.
+        4. Determine the outcome of the call: Success (blood draw confirmed or properly reminded) or Failure (unable to confirm, missed, or incomplete).
+
+        The AI agent is polite and should respond appropriately to patient questions.
+
+        Transcript Input:
+        \""\""\""{stt_transcript}\""\""\""
+
+        Based on this transcript, provide a structured analysis of the above points.
+    """"""",,,
